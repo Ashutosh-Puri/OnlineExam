@@ -41,8 +41,10 @@
                                     <td>
                                         @if ($exam->date < date('Y-m-d'))
                                             <span class="text-danger fw-bold">Date Expired </span>
+                                        @elseif ($exam->date == date('Y-m-d'))
+                                            <span class="text-success fw-bold">Today </span>
                                         @else
-                                            <span class="text-success fw-bold">OK </span>
+                                         <span class="text-primary fw-bold">In Feuture </span>
                                         @endif
                                          
                                     </td>

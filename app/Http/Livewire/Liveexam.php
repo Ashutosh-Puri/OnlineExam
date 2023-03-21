@@ -99,8 +99,8 @@ class Liveexam extends Component
     {   
       
         $selected =AssignExam::where('exam_id',$this->eid)->get('question_id');
-        $questions = Question::where('status','0')->whereIn('id',$selected)->paginate(2);
+        $questions = Question::where('status','0')->whereIn('id',$selected)->paginate(5);
         $this->tq = count( $selected);  
-        return view('livewire.liveexam',['questions'=> $questions]);
+        return view('livewire.liveexam',['questions'=> $questions ]);
     }
 }

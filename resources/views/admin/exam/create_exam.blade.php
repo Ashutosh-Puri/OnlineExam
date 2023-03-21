@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{  route('exam.store') }}">
                         @csrf
-                        <div class="row">
+                        <div class="row mb-3">
                             <label for="subject" class="col-12 col-md-1 form-label ">{{ __('Select Subject') }}</label>
                             <div class="col-12 col-md-5 ">
                                 <div class="form-group ">

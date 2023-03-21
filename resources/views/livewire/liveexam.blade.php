@@ -37,8 +37,8 @@
            </div>
        @endif  
    </div>
-       <?php $i=1; $j=0; ?>
-   
+       <?php  $i=1; $j=0; ?>
+    
        @foreach($questions as $q)
    
        

@@ -38,7 +38,7 @@
                         <div class="row my-4">
                             <div class="col-md-12 text-center ">
                                 <button type="submit" class="btn btn-custom fw-bold">
-                                    {{ __('Create') }}
+                                    {{ __('Assign') }}
                                 </button>
                             </div>
                         </div>

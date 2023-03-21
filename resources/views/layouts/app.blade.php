@@ -19,7 +19,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @livewireStyles
 </head>
-<body class="body d-flex flex-column min-vh-100" oncontextmenu="return false" >
+<body class="body d-flex flex-column min-vh-100" oncontextmenu="return true" >
 
     @include('layouts.navbar')
 
