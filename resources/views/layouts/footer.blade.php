@@ -23,7 +23,7 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <h4 class="text-white mb-4">Services</h4>
-                <a class="nav-link" href="{{ route('user.index') }}">Online Exam</a>
+                <a class="nav-link" href="{{ route('user.index') }}">Home</a>
                 <a class="nav-link" href="{{ route('users.index') }}">Register Student</a>
                 <a class="nav-link" href="{{ route('admin.index') }}">Register Teacher</a>
                 <a class="nav-link" href="{{ route('subscriber.create') }}">Unsubscribe Newsletter</a>
@@ -31,10 +31,10 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <h4 class="text-white mb-4">Quic Links</h4>
-                <a class="nav-link" href="#">About Us</a>
-                <a class="nav-link" href="#">Contact Us</a>
-                <a class="nav-link" href="#">Our Services</a>
-                <a class="nav-link" href="#">Our Team</a>
+                <a class="nav-link" href="{{ url('aboutus') }}">About Us</a>
+                <a class="nav-link" href="{{ url('contactus') }}">Contact Us</a>
+                <a class="nav-link" href="{{ route('result.index') }}">Result</a>
+                {{-- <a class="nav-link" href="">Our Team</a> --}}
 
             </div>
             <div class="col-lg-3 col-md-6">

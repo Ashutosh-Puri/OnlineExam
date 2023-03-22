@@ -6,12 +6,12 @@
     <div class="row w-100 m-0">
         <div class="col-12 m-0 p-0">
             @if (session('s-status'))
-                <div class="alert alert-success" role="alert">
+                <div class="alert m-4 alert-success" role="alert">
                     {{ session('s-status') }}
                 </div>
             @endif
             @if (session('d-status'))
-                <div class="alert alert-danger" role="alert">
+                <div class="alert m-4 alert-danger" role="alert">
                     {{ session('d-status') }}
                 </div>
             @endif

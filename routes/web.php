@@ -11,6 +11,7 @@ use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\User\ResultController;
+use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\Admin\ResultsController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\AssignExamController;
@@ -22,6 +23,17 @@ use App\Http\Controllers\Admin\QuestionAnswerController;
 Route::get('/',function(){
     return redirect('login');
 });
+
+Route::get('aboutus',function(){
+    return view('aboutus');
+});
+
+Route::get('contactus',function(){
+    return view('contactus');
+});
+
+Route::resource('contact', ContactController::class);
+
 Route::resource('subscriber',SubscriberController::class);
 
 Auth::routes(['verify'=> true]);

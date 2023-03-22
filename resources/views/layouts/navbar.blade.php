@@ -19,6 +19,13 @@
                     <!-- Authentication Links -->
                     @guest
                         @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link  {{ (request()->is('aboutus')) ? 'active' : '' }} " href="{{ url('aboutus') }}">{{ __('About Us') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link  {{ (request()->is('contactus')) ? 'active' : '' }} " href="{{ url('contactus') }}">{{ __('Contact Us') }}</a>
+                                </li>
+                          
                             <li class="nav-item">
                                 <a class="nav-link  {{ (request()->is('login')) ? 'active' : '' }} " href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
@@ -29,10 +36,21 @@
                             </li>
                         @endif --}}
                     @else
+                        @if (Auth::user()->role=='0')  
+                        <li class="nav-item">                   
+                            <a class="nav-link {{ (request()->is('user')) ? 'active' : '' }}" href="{{ url('user') }}">{{ __('Home') }}</a>                     
+                        </li>
+                            @endif
+                        <li class="nav-item">
+                            <a class="nav-link  {{ (request()->is('aboutus')) ? 'active' : '' }} " href="{{ url('aboutus') }}">{{ __('About Us') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  {{ (request()->is('contactus')) ? 'active' : '' }} " href="{{ url('contactus') }}">{{ __('Contact Us') }}</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link  {{ (request()->is('result')) ? 'active' : '' }} " href="{{ route('result.index') }}">{{ __('Result') }}</a>
                         </li>
-                       
+  
                         <li class="nav-item dropdown">
                            
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -43,9 +61,6 @@
                                 @if (Auth::user()->role=='1')                     
                                     <a class="nav-link {{ (request()->is('admin')) ? 'active' : '' }}" href="{{ route('admin.show',1) }}">{{ __('A Dashboard') }}</a>
                                     <a id="udashboard" class="nav-link {{ (request()->is('user')) ? 'active' : '' }}" href="{{ url('user') }}">{{ __('U Dashboard') }}</a>                         
-                                @endif
-                                @if (Auth::user()->role=='0')                     
-                                    <a class="nav-link {{ (request()->is('user')) ? 'active' : '' }}" href="{{ url('user') }}">{{ __('U Dashboard') }}</a>                     
                                 @endif
                                 <a id="logout" class="dropdown-item nav-link" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
@@ -63,30 +78,4 @@
         </div>
     </nav>
     <!-- Nav Bar End -->
-    <!-- Bottom Bar Start -->
-    {{-- <div class="container-fluid m-0 p-0 bg-custom  ">
-        <div class="row m-0 py-2">
-            <div class=" col-8 col-md-8    m-0 ">
-                <div class="input-group  ">
-                    <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username"
-                        aria-describedby="basic-addon2">
-                    <span class="btn btn-custom input-group-text" id="basic-addon2"><i
-                            class="p-1 fa fa-search"></i></span>
-                </div>
-            </div>
-            <div class=" col-4 col-md-4   p-0 m-0">
-                <div class=" float-end ">
-                    <a href="wishlist.html" class="btn btn-custom   mx-2">
-                        <i class="fa fa-heart"></i>
-                        <span>(0)</span>
-                    </a>
-                    <a href="cart.html" class="btn btn-custom mx-2">
-                        <i class="fa fa-shopping-cart"></i>
-                        <span>(0)</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- Bottom Bar End -->
 </div>
