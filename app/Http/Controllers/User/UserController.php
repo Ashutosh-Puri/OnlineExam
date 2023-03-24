@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {   
-        $exams=Exam::where('status','0')->where('date','>=',date('Y-m-d'))->paginate(10);
+        $exams=Exam::where('status','0')->where('date','>=',date('Y-m-d'))->orderBy('date','desc')->paginate(10);
         return view('user.dashboard',compact('exams'));
     }
 

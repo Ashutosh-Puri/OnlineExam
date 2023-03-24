@@ -59,7 +59,7 @@
                             </a>
                             <div class="dropdown-menu bg-custom dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 @if (Auth::user()->role=='1')                     
-                                    <a class="nav-link {{ (request()->is('admin')) ? 'active' : '' }}" href="{{ route('admin.show',1) }}">{{ __('A Dashboard') }}</a>
+                                    <a class="nav-link {{ (request()->is('admin/1')) ? 'active' : '' }}" href="{{ route('admin.show',1) }}">{{ __('A Dashboard') }}</a>
                                     <a id="udashboard" class="nav-link {{ (request()->is('user')) ? 'active' : '' }}" href="{{ url('user') }}">{{ __('U Dashboard') }}</a>                         
                                 @endif
                                 <a id="logout" class="dropdown-item nav-link" href="{{ route('logout') }}"

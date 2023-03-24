@@ -34,7 +34,7 @@
                                     <td scope="row">{{ $i->id }}</td>
                                     <td> {{ $i->email }}</td>
                                     <td >  
-                                        <a class="btn btn-danger btn-sm fw-bold"  onclick="event.preventDefault(); if( confirm('Are You Sure. You Want To Delete This Record')){document.getElementById('delete-subscriber').submit()};">Delete</a>
+                                        <a class="btn btn-warning btn-sm fw-bold"  onclick="event.preventDefault(); if( confirm('Are You Sure. You Want To Delete This Record')){document.getElementById('delete-subscriber').submit()};">Unsubscribe</a>
                                         <form id="delete-subscriber" action="{{ route('subscriber.destroy',$i->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
