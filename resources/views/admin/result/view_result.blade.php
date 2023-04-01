@@ -28,22 +28,32 @@
                                 <th>Subject</th>
                                 <th>Time</th>
                                 <th>Marks</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $m=1;
+                            @endphp
                             @forelse ($results as $result)
                                 <tr>
-                                    <td scope="row">{{ $result->id }}</td>
+                                    <td scope="row">{{ $m++}}</td>
                                     <td>{{ $result->user->name }}</td>
                                     <td>{{ $result->user->email }}</td>
                                     <td>{{ $result->exam->name }}</td>
                                     <td>{{ $result->exam->subjects->name}}</td>
                                     <td>{{ $result->exam->time }} Minutes</td>
                                     <td>{{ $result->marks }}</td>
-                                   
+                                    <td>
+                                        <form class="d-inline" id="delete-exam" action="{{ route('results.destroy',$result->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input class="btn btn-danger btn-sm fw-bold" type="submit" onclick="return confirm('Are You Sure. You Want To Delete This Record');" value="Delete">
+                                        </form>
+                                    </td>
                                 </tr>
                             @empty
-                             <td colspan="7">No Record Found..!</td>
+                             <td colspan="8">No Record Found..!</td>
                             @endforelse
                             {{ $results->links('pagination::bootstrap-5'); }}
 

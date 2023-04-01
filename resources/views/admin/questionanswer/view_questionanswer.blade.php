@@ -32,6 +32,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            
                             @forelse ($questionanswers as $i)
                                 <tr class="text-start">
                                     <td scope="row">{{ $i->id }}</td>
@@ -41,10 +42,11 @@
                                     <td class="text-nowrap">
                                         <a class="btn btn-success btn-sm fw-bold" href="{{ route('questionanswer.show',$i->id) }}">View</a>
                                         <a class="btn btn-primary btn-sm fw-bold" href="{{ route('questionanswer.edit',$i->id) }}">Edit</a>
-                                        <a class="btn btn-danger btn-sm fw-bold"  onclick="event.preventDefault(); if( confirm('Are You Sure. You Want To Delete This Record')){document.getElementById('delete-questionanswer').submit()};">Delete</a>
-                                        <form id="delete-questionanswer" action="{{ route('questionanswer.destroy',$i->id) }}" method="post">
+                                       
+                                        <form  class="d-inline"id="delete-questionanswer" action="{{ route('questionanswer.destroy',$i->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
+                                            <input class="btn btn-danger btn-sm fw-bold" type="submit" onclick="return confirm('Are You Sure. You Want To Delete This Record');" value="Delete">
                                         </form>  
                                     </td>
                                 </tr>

@@ -35,21 +35,25 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $m=1;
+                            @endphp
                             @forelse ($exams as $i)
                                 <tr>
-                                    <td scope="row">{{ $i->id }}</td>
+                                    <td scope="row">{{ $m++ }}</td>
                                     <td> {{ $i->name }}</td>
                                     <td> {{ $i->subjects->name}}</td>
-                                    <td> {{ $i->date }}</td>
-                                    <td> {{ $i->time }}</td>
+                                    <td> {{ date('d / m / Y', strtotime($i->date)) }}</td>
+                                    <td>{{ gmdate("H:i:s", $i->time*60); }} </td>
                                     <td>{{ $i->status== 0 ?'Active':'In Active'; }}</td>
                                     <td >
                                        
                                         <a class="btn btn-primary btn-sm fw-bold" href="{{ route('exam.edit',$i->id) }}">Edit</a>
-                                        <a class="btn btn-danger btn-sm fw-bold"  onclick="event.preventDefault(); if( confirm('Are You Sure. You Want To Delete This Record')){document.getElementById('delete-exam').submit()};">Delete</a>
-                                        <form id="delete-exam" action="{{ route('exam.destroy',$i->id) }}" method="post">
+                                      
+                                        <form class="d-inline" id="delete-exam" action="{{ route('exam.destroy',$i->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
+                                            <input class="btn btn-danger btn-sm fw-bold" type="submit" onclick="return confirm('Are You Sure. You Want To Delete This Record');" value="Delete">
                                         </form>  
                                     </td>
                                     <td >

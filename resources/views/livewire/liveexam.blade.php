@@ -1,31 +1,32 @@
-<div>
+<div class="user-select-none">
     <?php session('mode') ?>
 <div class="w-100 ">
 @if (session('mode')==0)
-<div class="exambar bg-custom px-2">
-    <div class="row ">
-       <div class="col-2 pb-2">
+<div class="exambar bg-custom  text-center fw-bold sticky-top  border-3 border-bottom border-warning">
+    <div class="row  ">
+       <div class="col-2 py-2">
            Subject : {{ $subject}}
        </div>
-       <div class="col-2 pb-2">
+       <div class="col-2 py-2">
            Total Questions : {{ $tq }}
        </div>
-       <div class="col-2 pb-2">
+       <div class="col-2 py-2">
            Attempt Questions : {{ $aq }} / {{ $tq }}
        </div>
-       <div class="col-2 pb-2">
+       <div class="col-2 py-2">
            Date : {{ $date }}
        </div>
-       <div class="col-2 pb-2">
+       <div class="col-2 py-2">
            Time : {{ $time}} 
        </div>
-       <div class="col-2 pb-2">
+       <div class="col-2 py-2">
            <button hidden wire:poll.1000ms="decrement">+</button>
-           Time Left : {{ gmdate("H:i:s",($lefttime)) }} 
+          <span>  Time Left : {{ gmdate("H:i:s",($lefttime)) }} </span> 
        </div>
+      
     </div>
    </div>
-   <div class="row w-100 pt-4 px-5">
+   <div class="row w-100 px-5">
        @if (session('s-status'))
            <div class="alert   alert-success fw-bold" role="alert">
                {{ session('s-status') }}
@@ -42,28 +43,28 @@
        @foreach($questions as $q)
    
        
-           <div class="card m-1">
-               <div class="card-header  fw-bold bg-custom fw-bold  ">
+           <div class="card bg-custom  m-1">
+               <div class="card-header  fw-bold fw-bold  ">
                    <div class="row">
-                       <div class="col-12 fs-4 ">
+                       <div class="col-12 h4 ">
                            {{ "Q ".$i++." . "  }}  {{ $q->question }}
                        </div>
                    </div>
                </div>
-               <div class="card-body bg-custom fs-5 fw-bold">
-                   <div class="row">
-                       <div   class="col-12 px-3 py-1 ">
+               <div class="card-body  h5 fw-bold  p-1  ">
+                   <div class="row m-0 p-0  ">
+                       <div   class="col-12   ">
                            
-                           <label for="{{ ++$j  }}" class="w-100 hover rounded"> <input id="{{ $j }}" type="radio" value="1" class="fs-1 mx-1"  wire:model="answer.{{ $q->id }}" >{{ $q->option_a }}  </label>
+                           <label for="{{ ++$j  }}" class="w-100 py-1 hover rounded"> <input id="{{ $j }}" type="radio" value="1" class="fs-1 mx-1"  wire:model="answer.{{ $q->id }}" >{{ $q->option_a }}  </label>
                        </div>
-                       <div  class="col-12 px-3 py-1 ">
-                           <label for="{{ ++$j  }}" class="w-100 hover rounded"> <input id="{{ $j }}" type="radio" value="2" class="fs-1 mx-1"  wire:model="answer.{{ $q->id }}" >{{ $q->option_b }}  </label>
+                       <div  class="col-12   ">
+                           <label for="{{ ++$j  }}" class="w-100 py-1 hover rounded"> <input id="{{ $j }}" type="radio" value="2" class="fs-1 mx-1"  wire:model="answer.{{ $q->id }}" >{{ $q->option_b }}  </label>
                        </div>
-                       <div  class="col-12 px-3 py-1 ">
-                           <label for="{{ ++$j  }}" class="w-100 hover rounded"> <input id="{{ $j }}" type="radio" value="3" class="fs-1 mx-1"  wire:model="answer.{{ $q->id }}" >{{ $q->option_c }}  </label>
+                       <div  class="col-12  ">
+                           <label for="{{ ++$j  }}" class="w-100 py-1 hover rounded"> <input id="{{ $j }}" type="radio" value="3" class="fs-1 mx-1"  wire:model="answer.{{ $q->id }}" >{{ $q->option_c }}  </label>
                        </div>
-                       <div  class="col-12 px-3 py-1 ">
-                           <label for="{{ ++$j  }}" class="w-100 hover rounded"> <input id="{{ $j }}" type="radio" value="4" class="fs-1 mx-1"  wire:model="answer.{{ $q->id }}" >{{ $q->option_d }}  </label>
+                       <div  class="col-12   ">
+                           <label for="{{ ++$j  }}" class="w-100 py-1 hover rounded"> <input id="{{ $j }}" type="radio" value="4" class="fs-1 mx-1"  wire:model="answer.{{ $q->id }}" >{{ $q->option_d }}  </label>
                        </div>
                        
                    </div>
@@ -76,7 +77,7 @@
                <div class="card-footer bg-custom  fw-bold">
                    <div class="row">
                        <div class="col-6">
-                           {{ $questions->links() }} 
+                           {{-- {{ $questions->links() }}  --}}
                        </div>
                        <div class="col-6">
                            <span class="btn btn-danger  fw-bold float-end"  wire:click="submit">Submit</span>

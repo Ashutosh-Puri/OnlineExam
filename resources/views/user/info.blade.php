@@ -21,18 +21,25 @@
                 <div class="card-body  table-responsive">
                     <table class="table table-sm table-striped table-bordered text-center table-inverse">
                         <thead class="thead-inverse">
-                            <tr>
-                                <td colspan="8" >
-                                    <div class="alert alert-danger text-danger fw-bold text-start" role="alert">
-                                     <strong>Note :</strong> <br>
-                                     1. During Exam Don't Switch Between Tabs. <br>
-                                     2. Don't Refresh Page. <br>
-                                     3. Each Question Carry 1 Mark. <br>
-                                     4. When Time Out Exam Automatically Submit. <br>
-                                     5. Good Luck :-)
+                            
+                                <div  class=" alert alert-danger text-danger fw-bold text-start" role="alert" >
+                                    <div class="row">
+                                        <div class=" col-12 col-md-6">
+                                            
+                                            <strong>Note :</strong> <br>
+                                            1. During Exam Don't Switch Between Tabs. <br>
+                                            2. Don't Refresh Page. <br>
+                                            3. Each Question Carry 1 Mark. <br>
+                                           
+                                        </div>
+                                        <div class=" col-12 col-md-6">
+                                            4. When Time Out Exam Automatically Submit. <br> 
+                                            5. Check Attempted Questions Before Submit. <br>
+                                            6. Check Time Left. <br>
+                                            7. Good Luck :-)  
+                                        </div>
                                     </div>
-                                </td>
-                            </tr>
+                                  </div>
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
@@ -44,19 +51,18 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                         
+                        <tbody>            
                                 <tr>
-                                    <td scope="row">{{ $user->id }}</td>
+                                    <td scope="row">1</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->subjects->name }}</td>
-                                    <td><span class="{{ $user->date!=date('Y-m-d')?'text-danger fw-bold':''; }}">{{ $user->date }} </span></td>
-                                    <td>{{$user->time  }} {{ $user->time==1?'Minute':'Minutes'; }} </td>
-                                    <td>{{ count($user->assignexam) }}</td>
+                                    <td><span class="{{ $user->date!=date('Y-m-d')?'text-danger fw-bold':''; }}">{{date('d / m / Y', strtotime($user->date))  }} </span></td>
+                                    <td>{{ gmdate("H:i:s", $user->time*60); }}  </td>
+                                    <td> <span class="{{ count($user->assignexam)==0?'text-danger fw-bold':''; }}">{{ count($user->assignexam) }} </span></td>
                                     <td><span class="{{ $lat==0?'text-danger fw-bold':''; }}">{{ $lat }}</span></td>
                                     <td>
                                         @if (isset($disable))
-                                          <a href="{{ route('user.edit',$user->id) }}" class=" disabled btn btn-success btn-sm fw-bold" >Start Exam</a>
+                                          <a href="#" class=" disabled btn btn-danger btn-sm fw-bold" >Start Exam</a>
                                         @else
                                          <a href="{{ route('user.edit',$user->id) }}" class="btn btn-success btn-sm fw-bold" >Start Exam</a>
                                         @endif

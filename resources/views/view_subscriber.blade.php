@@ -2,8 +2,6 @@
 
 @section('admin_content')
 
-    <div class="row m-0">
-        <div class="col ">
             @if (session('s-status'))
                 <div class="alert alert-success" role="alert">
                         {{ session('s-status') }}
@@ -29,15 +27,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $m=1;
+                            @endphp
                             @forelse ($subscribers as $i)
                                 <tr>
-                                    <td scope="row">{{ $i->id }}</td>
+                                    <td scope="row">{{ $m++}}</td>
                                     <td> {{ $i->email }}</td>
                                     <td >  
-                                        <a class="btn btn-warning btn-sm fw-bold"  onclick="event.preventDefault(); if( confirm('Are You Sure. You Want To Delete This Record')){document.getElementById('delete-subscriber').submit()};">Unsubscribe</a>
                                         <form id="delete-subscriber" action="{{ route('subscriber.destroy',$i->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
+                                            <input class="btn btn-warning btn-sm fw-bold" type="submit" onclick="return confirm('Are You Sure. You Want To Delete This Record');" value="Unsubscribe">
                                         </form>  
                                     </td>
                                     
@@ -51,7 +52,6 @@
                     </table>
                 </div>
             </div>
-        </div>
-    </div>
+   
 
 @endsection

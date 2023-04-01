@@ -30,19 +30,22 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $m=1;
+                            @endphp
                             @forelse ($users as $user)
                                 <tr>
-                                    <td scope="row">{{ $user->id }}</td>
+                                    <td scope="row">{{ $m++ }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->role == '1'?'Teacher':'Student'; }}</td>
                                     <td>
                                         <a class="btn btn-primary btn-sm fw-bold" href="{{ route('users.edit',$user->id) }}">Edit</a>
 
-                                        <a class="btn btn-danger btn-sm fw-bold" onclick="$(this).parent().find('form').submit()">Delete</a>
-                                        <form action="{{ route('users.destroy',$user->id) }}" method="post">
+                                        <form class="d-inline" action="{{ route('users.destroy',$user->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
+                                            <input class="btn btn-danger btn-sm fw-bold" type="submit" onclick="return confirm('Are You Sure. You Want To Delete This Record');" value="Delete">
                                         </form>
                                     </td>
                                 </tr>

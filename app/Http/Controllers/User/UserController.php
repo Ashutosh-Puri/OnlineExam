@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {   
-        $exams=Exam::where('status','0')->where('date','>=',date('Y-m-d'))->orderBy('date','desc')->paginate(10);
+        $exams=Exam::where('status','0')->where('date','>=',date('Y-m-d'))->orderBy('date','asc')->paginate(10);
         return view('user.dashboard',compact('exams'));
     }
 
@@ -52,9 +52,8 @@ class UserController extends Controller
     {    
         $rat =Result::where('user_id',Auth::user()->id)->where('exam_id',$user->id)->count();
         $lat=$user->attempt-$rat;
-        if($lat > 0 && ($user->date== date('Y-m-d')))
+        if($lat > 0 && ($user->date== date('Y-m-d')) && count($user->assignexam)>0)
         {   
-            
             return view('user.info',compact('user','lat'));
         }
         else

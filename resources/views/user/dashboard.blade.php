@@ -34,22 +34,25 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $m=1;
+                            @endphp
                             @forelse ($exams as $exam)
                                 <tr>
-                                    <td scope="row">{{ $exam->id }}</td>
+                                    <td scope="row">{{ $m++}}</td>
                                     <td>{{ $exam->name }}</td>
                                     <td class="text-start">{{ $exam->subjects->code  }}</td>
                                     <td class="text-start"> {{ $exam->subjects->name }}</td>
-                                    <td>{{ $exam->date }}</td>
-                                    <td>{{$exam->time  }} {{ $exam->time==1?'Minute':'Minutes'; }} </td>
+                                    <td><span class="{{ $exam->date!=date('Y-m-d')?'text-danger fw-bold':'text-success fw-bold'; }}">{{date('d / m / Y', strtotime($exam->date))  }} </span></td>
+                                    <td>{{ gmdate("H:i:s", $exam->time*60); }} </td>
                                     <td>
-                                        {{-- <button wire:click="info({{ $exam->id }})" class="btn btn-success btn-sm fw-bold" >Start Exam</button> --}}
+                                       
                                         <a href="{{ route('user.show',$exam->id) }}" class="btn btn-success btn-sm fw-bold" >View Exam</a>
                             
                                     </td>
                                 </tr>
                             @empty
-                             <td colspan="6">No Exams Scheduled..!</td>
+                             <td colspan="7">No Exams Scheduled..!</td>
                             @endforelse
                             {{ $exams->links('pagination::bootstrap-5'); }}
 
