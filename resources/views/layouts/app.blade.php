@@ -36,7 +36,11 @@
   
     <script src="{{ url('js/jquery-3.6.3.min.js') }}"></script>
     <script src="{{ url('js/multiselect-dropdown.js') }}"></script>
+
     @yield('scripts')
     @livewireScripts
+
+  
+   
 </body>
 </html>
